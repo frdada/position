@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配合z-index以及absoulte</title>
+</head>
+<style>
+    .container{
+        border:1px solid red;
+        height:300px;
+        /* 在他爸上加 position: relative; */
+        position: relative; 
+    }
+    .demo{
+        background: blueviolet;
+        width:50px;
+        height:50px;
+        position: relative;
+        top:10px;
+        z-index: 1;
+    }
+    .demo2{
+        background: black;
+        position: relative;
+        width:50px;
+        height:50px;
+    }
+    .close{
+        border: 1px solid red;
+        /* 在儿子上加position: absolute;匹配爸爸 */
+        position: absolute;
+
+        /* 距离最上面*/
+        top:0 ;
+        /* 距离最右边*/
+        right: 0;
+        padding:20px ;
+    }
+    button{
+        position:relative;
+    }
+    button span{
+        position:absolute;
+        /* 注意写这句话不许换行 white-space: nowrap */
+        white-space: nowrap;
+        border:1px solid green;
+         /* 距离底部+10px,注意用calc里面的语法是有空格的 */
+        bottom:calc(100% + 10px);
+          /* 距离右边 */
+        right:50%;
+         /* 右边偏移 */
+        transform: translateX(50%);
+    }
+    button span{
+        display: none;
+    }
+    /* 当鼠标移入的时候：hover */
+    button:hover span{
+        display: block;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="demo"></div>
+        <div class="demo2"></div>
+        <span class="close">×</span>
+        <div style="height:100px"></div>
+        <button>点击
+            <span class="tips">提示内容</span>
+        </button>
+    </div>
+   
+</body>
+</html>
